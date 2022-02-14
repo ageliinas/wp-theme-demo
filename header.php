@@ -45,4 +45,13 @@
         </div>
     </header>
 
+    <div class="conteneur flex align-right">
+        
+        <!--Formulaire barre de recherche -->
+        <form action="<?php echo esc_url(home_url('/')) ?>" method="get">
+            <input type="text" name="s" placeholder="Rechercher">
+        </form>
+
+    </div>
+
     <main class="conteneur">
