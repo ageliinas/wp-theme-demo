@@ -1,0 +1,46 @@
+@import "partials/mixin";
+@import "partials/colors";
+@import "partials/fonts";
+@import "partials/titles";
+
+body {
+    background-color: $third-light-color;
+    margin: 0;
+    padding: 0;
+    font-family: $content-font;
+
+    
+    header {
+        .conteneur {
+            display: flex;
+            width: 100%;
+            
+            nav {
+                width: 100%;
+
+                ul {
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                    list-style-type: none;
+                    display: flex;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+
+                    li {
+                        padding: 1rem;
+
+                        a {
+                            background-color: $first-light-color;
+                            display: block;
+                            padding: 1rem;
+                            @include link($third-light-color, $second-dark-color, $first-dark-color, $second-dark-color);
+
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}

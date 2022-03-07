@@ -1,0 +1,24 @@
+//Fichier de fonctions utilitaires à réutiliser
+
+@mixin link($normalColor, $hoverColor, $visitedColor, $activeColor, $underlined:false) {
+    
+    &{
+        //operation ternaire (if/else sur une seule ligne)
+        text-decoration: if($underlined, underlined, none );
+        color: $normalColor;
+        
+        &:visited {
+            color: $visitedColor;
+        }
+
+        &:active {
+            color: $activeColor;
+        }
+        
+        &:hover {
+            color: $hoverColor;
+        }
+    }
+}
+
+//Dimension d'écrans
