@@ -33,21 +33,23 @@
     while ($query->have_posts()) : $query->the_post(); 
     ?>
 
-        <article>
-            <!-- Récupérer le titre du reportage et l'afficher -->
-            <h3><?php echo get_field('titre') ?></h3>
+        <article class="flex">
+            <div class="demi">
+                <!-- Récupérer le titre du reportage et l'afficher -->
+                <h3><?php echo get_field('titre') ?></h3>
 
-            <!-- Récupérer la date du reportage et l'afficher -->
-            <p><?php echo get_field('date') ?></p>
-
-            <!-- Récupérer la photo et l'afficher -->
-            <?php if (get_field('image')): ?>
-                <img src="<?php echo get_field('image')['sizes']['large']?>" alt="">
-            <?php else: ?>
-                <img src="<?php echo get_template_directory_uri() ?>/images/placeholder.png" alt="" width='150' height='150'>
-            <?php endif ?>
+                <!-- Récupérer la date du reportage et l'afficher -->
+                <p><?php echo get_field('date') ?></p>
+            </div>
             
-            
+            <div class="demi">
+                <!-- Récupérer la photo et l'afficher -->
+                <?php if (get_field('image')): ?>
+                    <img src="<?php echo get_field('image')['sizes']['large']?>" alt="">
+                <?php else: ?>
+                    <img src="<?php echo get_template_directory_uri() ?>/images/placeholder.png" alt="" width='400' height='400'>
+                <?php endif ?>   
+            </div>                   
         </article>
 
     <?php
