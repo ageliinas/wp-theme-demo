@@ -9,7 +9,10 @@ body {
     padding: 0;
     font-family: $content-font;
 
-    
+    @include small {
+        background-color: red;
+    }
+
     header {
         .conteneur {
             display: flex;
