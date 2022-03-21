@@ -162,6 +162,21 @@ h1 a{
     margin-top: 20px;
 }
 
+.imageGallery1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.splide {
+    width: 50%;
+    margin: 1rem auto;
+}
+
+.splide .splide__slide {
+    text-align: center;
+}
+
 footer{
     height: 120px;
     border-top: 1px solid #ccc;

@@ -13,6 +13,8 @@
 
 ?>
 
+<!-- En dehors de la boucle -->
+<h2>Derniers reportages</h2>
 <div class="splide">
   <div class="splide__track">
 		<ul class="splide__list">
@@ -23,7 +25,12 @@
     if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post(); ?>
 
-    <li class="splide__slide">Reportage</li>
+    <!-- Boucle sur les reportages avec le slide -->
+    <li class="splide__slide">
+         <img src="<?php echo get_field('image')['sizes']['thumbnail'] ?>" alt="">
+         <p><?php echo get_field('titre') ?></p>
+         <p><?php echo get_field('date') ?></p>
+    </li>
 
     <?php
     endwhile;

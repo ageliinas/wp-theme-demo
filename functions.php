@@ -14,6 +14,10 @@
         wp_enqueue_style( 'splidecss', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css');
 
         wp_enqueue_script( 'mainjs', get_template_directory_uri()."/js/main.js", array('splidejs') );
+
+        wp_enqueue_script( 'simplelightboxjs', get_template_directory_uri(). "/js/simpleLightbox.min.js");
+
+        wp_enqueue_style( 'simplelightboxcss', get_template_directory_uri(). "/styles/simpleLightbox.min.css");
     }
 
     add_action( 'wp_enqueue_scripts', 'simplenews_enqueue_styles' );
