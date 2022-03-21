@@ -17,7 +17,7 @@ Template Name: Gabarit accueil
     );*/
 
     $args = array(
-        'category__not_in' => 1
+        'category__not_in' => array(1, 24, 23)
     );
 
     $query = new WP_Query($args);
@@ -57,6 +57,12 @@ Template Name: Gabarit accueil
         <?php get_sidebar(); ?>
         
     </section>
+</div>
+
+<div>
+    <!-- Chercher le template part -->
+    <?php get_template_part('templates/parts/latest', 'reportages');?>
+
 </div>
 
 

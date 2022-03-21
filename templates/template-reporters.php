@@ -20,9 +20,9 @@
     <?php 
     
     //paramètres pour la requête
-    $args = array('category_name' => 'reporters',
+    $args = array('category_name' => 'reporter',
         'order' => 'title',
-        'order_by' => 'ASC'
+        'orderby' => 'ASC'
     );
     
     //Exécution de la requête
@@ -32,20 +32,21 @@
     if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post(); 
     ?>
+        <a href="<?php echo get_the_permalink() ?>">
+            <article>
+                <!-- Récupérer les données des champs 'nom' et afficher -->
+                <h3><?php echo get_field('prenom') ?>&nbsp;<?php echo get_field('nom') ?></h3>
 
-        <article>
-            <!-- Récupérer les données des champs 'nom' et afficher -->
-            <h3><?php echo get_field('prenom') ?>&nbsp;<?php echo get_field('nom') ?></h3>
-
-            <!-- Récupérer la photo et l'afficher -->
-            <?php if (get_field('photo')): ?>
-                <img src="<?php echo get_field('photo')['sizes']['thumbnail']?>" alt="">
-            <?php else: ?>
-                <img src="<?php echo get_template_directory_uri() ?>/images/portrait.png" alt="" width='150' height='150'>
-            <?php endif ?>
-            
-            <p>Années d'expériences : <?php echo get_field('annees_dexperience') ?></p>
-        </article>
+                <!-- Récupérer la photo et l'afficher -->
+                <?php if (get_field('photo')): ?>
+                    <img src="<?php echo get_field('photo')['sizes']['thumbnail']?>" alt="">
+                <?php else: ?>
+                    <img src="<?php echo get_template_directory_uri() ?>/images/portrait.png" alt="" width='150' height='150'>
+                <?php endif ?>
+                
+                <p>Années d'expériences : <?php echo get_field('annees_dexperience') ?></p>
+            </article>
+        </a>
 
     <?php
     endwhile;
