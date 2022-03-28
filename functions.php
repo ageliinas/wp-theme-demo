@@ -65,4 +65,88 @@
 
     add_action('widgets_init', 'simplenews_widgets_init');
 
+    // Entrevue post type (créer un onglet sur le admin de wordpress pour les entrevues de type post type)
+    function simplenews_register_entrevue_post_type()
+    {
+        $labels = [
+            'name'                     => __("Entrevues", "simplenews"),
+            'singular_name'            => __("Entrevue", "simplenews"),
+            'add_new'                  => __("Ajouter", "simplenews"),
+            'add_new_item'             => __("Ajouter une entrevue", "simplenews"),
+            'edit_item'                => __("Modifier l'entrevue", "simplenews"),
+            'new_item'                 => __("Nouvelle entrevue", "simplenews"),
+            'view_item'                => __("Afficher l'entrevue", "simplenews"),
+            'view_items'               => __("Afficher les entrevues", "simplenews"),
+            'search_items'             => __("Rechercher les entrevues", "simplenews"),
+            'not_found'                => __("Aucune entrevues n'a été trouvé", "simplenews"),
+            'not_found_in_trash'       => __("Aucune entrevue n'a été trouvé dans la corbeille", "simplenews"),
+            'all_items'                => __("Toutes les entrevuess", "simplenews"),
+            'archives'                 => __("Archives des entrevues", "simplenews"),
+            'attributes'               => __("Attributs de l'entrevue", "simplenews"),
+            'insert_into_item'         => __("Insérer dans l'entrevue", "simplenews"),
+            'uploaded_to_this_item'    => __("Téléverser dans l'entrevue'", "simplenews"),
+            'featured_image'           => __("Image de l'entrevue", "simplenews"),
+            'set_featured_image'       => __("Assigner l'image à l'entrevue", "simplenews"),
+            'remove_featured_image'    => __("Retirer l'image de l'entrevue", "simplenews"),
+            'use_featured_image'       => __("Utiliser l'image de l'entrevue", "simplenews"),
+            'filter_items_list'        => __("Filtrer la liste des entrevues", "simplenews"),
+            'items_list_navigation'    => __("Liste de navigation des entrevues", "simplenews"),
+            'items_list'               => __("Liste des entrevues", "simplenews"),
+            'item_published'           => __("L'entrevue a été publié", "simplenews"),
+            'item_published_privately' => __("L'entrevue a été publié en privé", "simplenews"),
+            'item_reverted_to_draft'   => __("L'entrevue a été remis en brouillon", "simplenews"),
+            'item_scheduled'           => __("L'entrevue a été planifié", "simplenews"),
+            'item_updated'             => __("L'entrevue a été mis à jour", "simplenews")
+        ];
+    
+        $args = [
+            'labels'              => $labels,
+            'description'         => __("Contenu de type entrevue", "simplenews"),
+            'public'              => true,
+            'menu_icon'           => 'dashicons-microphone',
+            'menu_position'       => 5,
+            'supports'            => ['title', 'editor', 'thumbnail'],
+            'rewrite'             => ['slug' => 'entrevue']
+        ];
+    
+        register_post_type("entrevue", $args);
+    }
+
+    add_action('init', 'simplenews_register_entrevue_post_type');
+
+    // Ajouter l'option type sous l'onglet entrevue
+    function simplenews_register_entrevue_taxonomies()
+    {
+        $labels = [
+            "name"          => _x("Types", "simplenews"),
+            "singular_name" => _x('Type', 'simplenews'),
+            "menu_name"     => __('Types', 'simplenews'),
+            "all_items"     => __("Toutes les types", "simplenews"),
+            "edit_item"     => __("Modifier le type", "simplenews"),
+            "view_item"     => __("Afficher le type", "simplenews"),
+            "update_item"   => __('Mettre à jour le type', "simplenews"),
+            "add_new_item"  => __("Ajouter un type d'entrevue", "simplenews"),
+            "new_item_name" => __("Nouveau nom du type", "simplenews"),
+            "search_items"  => __("Rechercher des types", "simplenews"),
+            "popular_items" => __("Types populaires", "simplenews"),
+            "back_to_items" => __("Revenir aux types", "simplenews")
+        ];
+    
+        $args = [
+            "hierarchical"      => true,
+            "labels"            => $labels,
+            "show_ui"           => true,
+            "show_in_menu"      => true,
+            "show_admin_column" => true,
+            "query_var"         => true,
+            "rewrite"           => [
+                "slug" => "types"
+            ]
+        ];
+    
+        register_taxonomy("types_entrevue", ["entrevue"], $args);
+    }
+
+    add_action('init', 'simplenews_register_entrevue_taxonomies');
+
 ?>
